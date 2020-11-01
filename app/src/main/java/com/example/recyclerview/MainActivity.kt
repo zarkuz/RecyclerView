@@ -1,7 +1,9 @@
 package com.example.recyclerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Telephony
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,12 +19,24 @@ class MainActivity : AppCompatActivity() {
         rvSekolah.setHasFixedSize(true)
 
         list.addAll(DataSekolah.listData)
-        showRecyclerViewListMode()
-
+//        showRecyclerViewListMode()
+//        showRecyclerViewGridMode()
+        showRecyclerViewCardMode()
     }
+
     private fun showRecyclerViewListMode(){
         rvSekolah.layoutManager = LinearLayoutManager(this)
         val listSekolahAdapter = ListSekolahAdapter(list)
         rvSekolah.adapter = listSekolahAdapter
+    }
+    private fun showRecyclerViewGridMode(){
+        rvSekolah.layoutManager = LinearLayoutManager(this)
+        val gridSekolahAdapter = GridSekolahAdapter(list)
+        rvSekolah.adapter = gridSekolahAdapter
+    }
+    private fun showRecyclerViewCardMode(){
+        rvSekolah.layoutManager = LinearLayoutManager(this)
+        val cardSekolahAdapter = CardSekolahAdapter(list)
+        rvSekolah.adapter = cardSekolahAdapter
     }
 }
